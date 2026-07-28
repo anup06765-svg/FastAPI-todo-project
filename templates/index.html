@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>FastAPI Todo</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📋 FastAPI Todo Dashboard</h1>
+
+<div class="top-bar">
+
+<h3>
+
+Welcome,
+
+{{ username }}
+
+</h3>
+
+<div>
+
+<a href="/profile">
+
+Profile
+
+</a>
+
+&nbsp;&nbsp;
+
+<a href="/logout">
+
+Logout
+
+</a>
+
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card blue">
+<h3>Total</h3>
+<h2>{{ total }}</h2>
+</div>
+
+<div class="card green">
+<h3>Completed</h3>
+<h2>{{ completed }}</h2>
+</div>
+
+<div class="card red">
+<h3>Pending</h3>
+<h2>{{ pending }}</h2>
+</div>
+
+</div>
+
+<form action="/" method="get">
+
+<input
+type="text"
+name="search"
+placeholder="Search Task..."
+value="{{search}}">
+
+<button>
+
+Search
+
+</button>
+
+</form>
+
+<form action="/add" method="post">
+
+<input
+type="text"
+name="title"
+placeholder="Enter New Task"
+required>
+
+<select name="priority">
+
+<option value="High">High</option>
+
+<option value="Medium" selected>Medium</option>
+
+<option value="Low">Low</option>
+
+</select>
+
+<select name="category">
+
+<option value="Study">Study</option>
+
+<option value="Office">Office</option>
+
+<option value="Personal">Personal</option>
+
+</select>
+
+<input
+type="date"
+name="due_date">
+
+<button type="submit">
+
+Add Task
+
+</button>
+
+</form>
+
+<hr>
+
+<ul>
+
+{% for task in tasks %}
+
+<li>
+
+<div>
+
+{% if task.completed %}
+
+<s>{{task.title}}</s>
+
+{% else %}
+
+<b>{{task.title}}</b>
+
+{% endif %}
+
+<br>
+
+Priority :
+{{task.priority}}
+
+<br>
+
+Category :
+{{task.category}}
+
+<br>
+
+Due :
+{{task.due_date}}
+
+</div>
+
+<div>
+
+<a href="/complete/{{task.id}}">✔</a>
+
+<a href="/edit/{{task.id}}">✏️</a>
+
+<a
+href="/delete/{{task.id}}"
+onclick="return confirm('Delete this task?')">
+
+🗑
+
+</a>
+
+</div>
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+</body>
+
+</html>

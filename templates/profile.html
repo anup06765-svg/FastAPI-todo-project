@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Profile</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>👤 My Profile</h1>
+
+    <div class="profile-card">
+
+        <h2>Personal Information</h2>
+
+        <hr>
+
+        <p>
+            <strong>👤 Username:</strong>
+            {{ user.username }}
+        </p>
+
+        <p>
+            <strong>📧 Email:</strong>
+            {{ user.email }}
+        </p>
+
+        <hr>
+
+        <h2>Task Statistics</h2>
+
+        <p>
+            <strong>📋 Total Tasks:</strong>
+            {{ stats.total }}
+        </p>
+
+        <p>
+            <strong>✅ Completed:</strong>
+            {{ stats.completed }}
+        </p>
+
+        <p>
+            <strong>⏳ Pending:</strong>
+            {{ stats.pending }}
+        </p>
+
+    </div>
+
+    <br>
+
+    <a href="/profile/edit">
+        <button>Edit Profile</button>
+    </a>
+
+    <a href="/profile/password">
+        <button>Change Password</button>
+    </a>
+
+    <a href="/">
+        <button>Dashboard</button>
+    </a>
+
+</div>
+
+</body>
+
+</html>
+
